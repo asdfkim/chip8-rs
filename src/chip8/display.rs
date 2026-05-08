@@ -1,5 +1,5 @@
-const DISPLAY_WIDTH: usize = 64;
-const DISPLAY_HEIGHT: usize = 32;
+pub const DISPLAY_WIDTH: usize = 64;
+pub const DISPLAY_HEIGHT: usize = 32;
 
 pub struct Display {
     pub vram: [bool; DISPLAY_WIDTH * DISPLAY_HEIGHT],
