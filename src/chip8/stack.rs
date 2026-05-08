@@ -1,7 +1,7 @@
 const STACK_SIZE: usize = 16;
 
 pub struct Stack {
-    data: [u16; STACK_SIZE],
+    pub data: [u16; STACK_SIZE],
 }
 
 impl Stack {

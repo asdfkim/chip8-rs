@@ -22,7 +22,7 @@ const FONT_SET: [u8; 80] = [
 ];
 
 pub struct Memory {
-    data: [u8; MEMORY_SIZE],
+    pub data: [u8; MEMORY_SIZE],
 }
 
 impl Memory {
