@@ -13,13 +13,22 @@ impl Cpu {
         }
     }
 
-    pub fn step(&mut self, bus: &mut Bus) {
+    pub fn tick(&mut self, bus: &mut Bus) {
         // fetch
         let opcode = bus.memory.read_u16(self.registers.pc);
         self.registers.pc += 2;
 
         // decode + execute
         self.execute(bus, opcode);
+    }
+
+    pub fn tick_timers(&mut self) {
+        if self.registers.dt > 0 {
+            self.registers.dt -= 1;
+        }
+        if self.registers.st > 0 {
+            self.registers.st -= 1;
+        }
     }
 
     fn execute(&mut self, bus: &mut Bus, opcode: u16) {
