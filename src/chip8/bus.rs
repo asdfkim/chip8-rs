@@ -1,8 +1,9 @@
-use crate::chip8::{display::Display, memory::Memory};
+use crate::chip8::{display::Display, keypad::Keypad, memory::Memory};
 
 pub struct Bus {
     pub memory: Memory,
     pub display: Display,
+    pub keypad: Keypad,
 }
 
 impl Bus {
@@ -10,6 +11,7 @@ impl Bus {
         Bus {
             memory: Memory::new(),
             display: Display::new(),
+            keypad: Keypad::new(),
         }
     }
 }
