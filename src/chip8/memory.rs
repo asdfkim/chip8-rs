@@ -39,11 +39,24 @@ impl Memory {
         self.data[ROM_START..ROM_START + data.len()].copy_from_slice(data);
     }
 
-    pub fn read(&self, addr: u16) -> u8 {
+    // u8
+    pub fn read_u8(&self, addr: u16) -> u8 {
         self.data[addr as usize]
     }
 
-    pub fn write(&mut self, addr: u16, value: u8) {
+    pub fn write_u8(&mut self, addr: u16, value: u8) {
         self.data[addr as usize] = value;
+    }
+
+    // u16
+    pub fn read_u16(&self, addr: u16) -> u16 {
+        let hi = self.data[addr as usize] as u16;
+        let lo = self.data[addr as usize + 1] as u16;
+        (hi << 8) | lo
+    }
+
+    pub fn write_u16(&mut self, addr: u16, value: u16) {
+        self.data[addr as usize] = (value >> 8) as u8;
+        self.data[addr as usize + 1] = value as u8;
     }
 }
